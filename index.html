@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Music player with ThreeJS and Leap Motion Controller" />
+        <meta name="keywords" content="thomas lampa, leap motion, leap js, threejs, leap motion controller, music player" />
+        <meta name="author" content="Lampa Thomas" />
+        <title>Leap Motion Music</title>
+        <link rel="stylesheet" href="css/style.css" >
+    </head>
+
+    <body>
+        <div id="display" ></div>
+        <div id="by" >By Thomas Lampa - lampa-thomas.fr</div>
+        <div id="info" >Music from auboutdufil.com ( Creative Commons 2.0 & 3.0 )</div>
+        <div id="frame" ></div>
+        <div id="stat"></div>
+        <div id="plug" ></div>
+
+        <audio id="audio" src="music/1.mp3" preload="auto" ></audio>
+
+        <!-- ThreeJS -->
+        <script type="text/javascript" src="js/three.js" ></script>
+        <script type="text/javascript" src="js/stats.js"></script>
+        <script type="text/javascript" src="js/helvetiker_bold.typeface.js" ></script>
+
+        <!-- LeapJS -->
+        <script type="text/javascript" src="js/leap.js" ></script>
+        <script type="text/javascript" src="js/leap.controller.js" ></script>
+        <script type="text/javascript" src="js/leap.loop.js" ></script>
+    </body>
+</html>
