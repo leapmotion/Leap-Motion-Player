@@ -1,10 +1,11 @@
 // init
 var scene = new THREE.Scene(),
     // création de la camera
-    camera = new THREE.PerspectiveCamera(60, (window.innerWidth - 25) / (window.innerHeight - 25), 0.1, 2000),
+    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000),
     // init du moteur graphic
     renderer = new THREE.WebGLRenderer(),
     // variable
+    touchZone = -120,
     array_finger = [],
     array_finger_branch = [],
     hand_center = [],
@@ -37,7 +38,7 @@ camera.rotation.x = - 0.3;
 camera.position.z = 550;
 
 // taille du rendu
-renderer.setSize((window.innerWidth - 25),(window.innerHeight - 25));
+renderer.setSize(window.innerWidth,window.innerHeight);
 
 // rendu dans le container
 document.getElementById('display').appendChild(renderer.domElement);
@@ -223,7 +224,7 @@ function detect(touchHand) {
         map: THREE.ImageUtils.loadTexture('img/play.png'),
         color:'blue'
     }));
-    tmp.position.z = -100;
+    tmp.position.z = touchZone;
     tmp.position.y = 350;
     tmp.position.x = -140;
     scene.add(tmp);
@@ -237,7 +238,7 @@ function detect(touchHand) {
         map: THREE.ImageUtils.loadTexture('img/pause.png'),
         color:'blue'
     }));
-    tmp.position.z = -100;
+    tmp.position.z = touchZone;
     tmp.position.y = 350;
     scene.add(tmp);
     onclick(tmp,function(){
@@ -250,7 +251,7 @@ function detect(touchHand) {
         map: THREE.ImageUtils.loadTexture('img/stop.png'),
         color:'red'
     }));
-    tmp.position.z = -100;
+    tmp.position.z = touchZone;
     tmp.position.y = 350;
     tmp.position.x = 140;
     scene.add(tmp);
@@ -263,28 +264,28 @@ function detect(touchHand) {
 })();
 
 // text
-positionTrack[1] = [{x:-300 ,y:280 ,z: -100 },{x:300 ,y:280 ,z: -100 },{x:300 ,y:240 ,z: -100 },{x:-300 ,y:240 ,z: -100 },{x:-300 ,y:280 ,z: -100 }];
-positionTrack[2] = [{x:-300 ,y:200 ,z: -100 },{x:300 ,y:200 ,z: -100 },{x:300 ,y:160 ,z: -100 },{x:-300 ,y:160 ,z: -100 }, {x:-300 ,y:200 ,z: -100 }];
-positionTrack[3] = [{x:-300 ,y:120 ,z: -100 }, {x:300 ,y:120 ,z: -100 }, {x:300 ,y:80 ,z: -100 }, {x:-300 ,y:80 ,z: -100 }, {x:-300 ,y:120 ,z: -100 }];
+positionTrack[1] = [{x:-300 ,y:280 ,z: touchZone },{x:300 ,y:280 ,z: touchZone },{x:300 ,y:240 ,z: touchZone },{x:-300 ,y:240 ,z: touchZone },{x:-300 ,y:280 ,z: touchZone }];
+positionTrack[2] = [{x:-300 ,y:200 ,z: touchZone },{x:300 ,y:200 ,z: touchZone },{x:300 ,y:160 ,z: touchZone },{x:-300 ,y:160 ,z: touchZone }, {x:-300 ,y:200 ,z: touchZone }];
+positionTrack[3] = [{x:-300 ,y:120 ,z: touchZone }, {x:300 ,y:120 ,z: touchZone }, {x:300 ,y:80 ,z: touchZone }, {x:-300 ,y:80 ,z: touchZone }, {x:-300 ,y:120 ,z: touchZone }];
 (function(){
     var fontModel = {size: 20, height: 5, curveSegments: 6, font: "helvetiker", weight: "bold"}, color = '#474343', tmp;
 
     tmp = new THREE.Mesh(new THREE['TextGeometry']('SmallRadio - LSF 7th Gear Remix',fontModel), new THREE.MeshBasicMaterial({color:color}));
-    tmp.position.z = -100;
+    tmp.position.z = touchZone;
     tmp.position.y = 250;
     tmp.position.x = -208;
     scene.add(tmp);
     onclick(tmp,function(){changeSrc(1)},null,[600,60],0);
 
     tmp = new THREE.Mesh(new THREE['TextGeometry']('Pornophonique - Space Invaders',fontModel), new THREE.MeshBasicMaterial({color:color}));
-    tmp.position.z = -100;
+    tmp.position.z = touchZone;
     tmp.position.y = 170;
     tmp.position.x = -206;
     scene.add(tmp);
     onclick(tmp,function(){changeSrc(2)},null,[600,60],0);
 
     tmp = new THREE.Mesh(new THREE['TextGeometry']('Mizuki s Last Chance - Yeah',fontModel), new THREE.MeshBasicMaterial({color:color}));
-    tmp.position.z = -100;
+    tmp.position.z = touchZone;
     tmp.position.y = 90;
     tmp.position.x = -178;
     scene.add(tmp);
